@@ -1,0 +1,37 @@
+.main
+  .main__top
+    .main__top__group
+      .main__top__group__name 不動産
+      %ul.main__top__group__member 
+        Member:
+        %li.main__top__group__member__list takenaga
+        %li.main__top__group__member__list takenaga
+        %li.main__top__group__member__list takenaga
+    .main__top__edit-btn
+      = link_to '#' do
+        = "Edit"
+  .main__middle
+    .main__middle__message-area
+      %ul.main__middle__message-area__post
+        %li.main__middle__message-area__post__name たけなが
+        %li.main__middle__message-area__post__datetime 2020/09/20
+      .main__middle__message-area__message こんにちは
+      %ul.main__middle__message-area__post
+        %li.main__middle__message-area__post__name たけなが
+        %li.main__middle__message-area__post__datetime 2020/09/20
+      .main__middle__message-area__message こんにちは
+      %ul.main__middle__message-area__post
+        %li.main__middle__message-area__post__name たけなが
+        %li.main__middle__message-area__post__datetime 2020/09/20
+      .main__middle__message-area__message こんにちは
+
+  .main__bottom
+    .main__bottom__form
+      .main__bottom__form__input
+        %input{type:"text",placeholder: "type a message",class:"main__bottom__form__input__text-area"}
+        %label{class: "main__bottom__form__input__icon"}
+          = icon('fas', 'image',class: 'icon')
+          %input{type: "file",class: 'hyde'}
+      .main__bottom__form__send-btn
+        = link_to '#' do
+          = "Send"

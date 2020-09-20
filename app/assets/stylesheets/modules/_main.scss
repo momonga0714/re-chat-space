@@ -1,0 +1,117 @@
+.main{
+  width: calc(100vw - 300px);
+  height: 100vh;
+  right:0;
+  position: absolute;
+  &__top{
+    height: 100px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    &__group{
+      float: left;
+      &__name{
+        padding: 35px 0 15px 40px;
+        font-size: 20px;
+      }
+      &__member{
+        font-size: 12px;
+        color: #999999;
+        margin-left: 40px;
+        display: flex;
+        
+        &__list{
+          margin-left:5px ;
+        }
+      }
+    }
+    &__edit-btn{
+      float: right;
+      margin: 28px 40px;
+      padding: 0 20px;
+      height: 40px;
+      width: 72px;
+      line-height: 40px;
+      cursor: pointer;
+      border: solid 1px #38aef0;
+      a{
+        text-decoration: none;
+        color: #38aef0;
+      }
+    }
+  }
+
+
+  &__middle{
+    height: calc(100vh - 100px - 90px);
+    background-color: #fafafa;
+    &__message-area{
+      margin-left:40px;
+      padding-top: 35px;
+      &__post{
+        margin-bottom: 12px;
+        display: flex;
+        &__name{
+          color: #333333;
+        }
+        &__datetime{
+          font-size: 12px;
+          color: #999999;
+          margin-left: 5px;
+        }
+      }
+      &__message{
+        font-size: 14px;
+        color:#434a54;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+
+  &__bottom{
+    height: 90px;
+    background-color: #d2d2d2;
+    &__form{
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      &__input{
+        position: relative;
+        width: 100%;
+        &__text-area{
+          width: calc(100vw - 300px - 195px);
+          height: 50px;
+          color: #434A54;
+          padding-left:10px;
+        }
+        &__icon{
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 1.3rem;
+          cursor: pointer;
+        }
+        .hyde{
+          display: none;
+        }
+
+      }
+      &__send-btn{
+        display: flex;
+        width: 100px;
+        height: 50px;
+        background-color: #38aef0;
+        align-items: center;
+        margin-left: 15px;
+        padding: 0 30px;
+        a{
+          text-decoration: none;
+          color: #ffffff;
+          
+        }
+      }
+      
+    }
+  }
+}
+
