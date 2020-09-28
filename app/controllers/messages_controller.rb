@@ -1,21 +1,33 @@
 class MessagesController < ApplicationController
 
+  before_action :group_set
+
+
   def index
-    # @messages = Message.all
+    @message = Message.new
+    @messages = @group.messages.includes(:user)
+    
   end
 
-  def new
-    @message = Message.new
-    @message.user << current_user
-  end
 
   def create
-    @message = Message.create(message_set)
+    @message = @group.messages.create(message_set)
+    if @message.save
+      redirect_to  group_messages_path(@group),notice: "メッセージの投稿が完了しました"
+    else
+      @messages = @group.messages.includes(:user)
+      flash.now[:alert] = 'メッセージを入力してください。'
+      render :index
+    end
   end
 
 
   private
   def message_set
-    params.require(:message).permit(:message)
+    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
+  end
+
+  def group_set
+    @group = Group.find(params[:group_id])
   end
 end

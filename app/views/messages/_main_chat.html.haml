@@ -1,39 +1,35 @@
 .main
   .main__top
     .main__top__group
-      .main__top__group__name 不動産
+      .main__top__group__name
+        = @group.group_name
       %ul.main__top__group__member 
         Member:
-        %li.main__top__group__member__list takenaga
-        %li.main__top__group__member__list takenaga
-        %li.main__top__group__member__list takenaga
+        - @group.users.each do |user|
+          %li.main__top__group__member__list
+            = user.name
     .main__top__edit-btn
-      = link_to edit_group_path(current_user) do
+      = link_to edit_group_path(@group.id) do
         = "Edit"
+      = link_to("Delete",group_path(@group.id),method: :delete)
   .main__middle
     .main__middle__message-area
-      %ul.main__middle__message-area__post
-        %li.main__middle__message-area__post__name たけなが
-        %li.main__middle__message-area__post__datetime 2020/09/20
-      .main__middle__message-area__message こんにちは
-      %ul.main__middle__message-area__post
-        %li.main__middle__message-area__post__name たけなが
-        %li.main__middle__message-area__post__datetime 2020/09/20
-      .main__middle__message-area__message こんにちは
-      %ul.main__middle__message-area__post
-        %li.main__middle__message-area__post__name たけなが
-        %li.main__middle__message-area__post__datetime 2020/09/20
-      .main__middle__message-area__message こんにちは
-
+      - @messages.each do |message|
+        %ul.main__middle__message-area__post
+          %li.main__middle__message-area__post__name
+            = message.user.name
+          %li.main__middle__message-area__post__datetime
+            = message.created_at.to_s(:datetime_jp)
+        .main__middle__message-area__image
+          = image_tag message.image
+        .main__middle__message-area__message
+          = message.content
   .main__bottom
     .main__bottom__form
       .main__bottom__form__input
-        %input{type:"text",placeholder: "type a message",class:"main__bottom__form__input__text-area"}
-        %label{class: "main__bottom__form__input__icon"}
-          = icon('fas', 'image',class: 'icon')
-          %input{type: "file",class: 'hyde'}
-      .main__bottom__form__send-btn
-        = link_to '#' do
-          = "Send"
-
-
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, placeholder: "type a message",class:"main__bottom__form__input__text-area"
+          = f.label :image, class: 'main__bottom__form__input__icon' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'hyde', id: 'image-content'
+          = f.submit 'Send', class: 'main__bottom__form__send-btn'

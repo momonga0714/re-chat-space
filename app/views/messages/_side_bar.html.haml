@@ -4,18 +4,17 @@
       %p.side__top__box__left
         = current_user.name
       %ul.side__top__box__right
-        = link_to new_group_path do
+        = link_to new_group_path,{class: "new-icon"} do
           = icon('far', 'edit',class: 'icon-left')
-        %li.icon-left
-        = link_to edit_user_path(current_user) do
+        = link_to edit_user_path(current_user),{class: "edit-icon"} do
           = icon('fas', 'cog',class: 'icon-right')
-        %li.icon-right
   .side__bottom
     .side__bottom__group
       .side__bottom__group__name
       - current_user.groups.each do |group|
-        = link_to messages_path do
+        = link_to group_messages_path(group),{class: "group-name"} do
           = group.group_name
         %br
       .side__bottom__group__message 
         まだメッセージはありません
+    
